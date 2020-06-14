@@ -1,0 +1,11 @@
+## 构建和链接静态库和动态库
+---
+### 工作原理
+* `add_library(message STATIC Message.hpp Message.cpp)` :生成必要的构建指令，将指定的源码编译到库中。add_library的第一个参数是目标名。整个CMakeLists.txt中，可使用相同的名称来引用库。生成的库的实际名称将由CMake通过在前面添加前缀lib和适当的扩展名作为后缀来形成。生成库是根据第二个参数(STATIC或SHARED)和操作系统确定的。
+* `target_link_libraries(hello-world message)`: 将库链接到可执行文件。此命令还确保hello-world可执行文件可以正确地依赖于消息库。**因此，在消息库链接到hello-world可执行文件之前，需要完成消息库的构建**
+
+CMake接受其他值作为add_library的第二个参数的有效值:
+
+* `STATIC` :用于创建静态库(.a)，即编译文件的打包存档，以便在链接其他目标时使用，例如：可执行文件
+* `SHARED`:用于创建动态库(.so)，即可以动态链接，并在运行时加载的库
+
