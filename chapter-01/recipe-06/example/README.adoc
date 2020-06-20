@@ -1,0 +1,21 @@
+## 制定编译器
+---
+### 具体实施
+如何选择一个特定编译器？
+
+1. 使用CLI的 `-D` 选项：`cmake -D CMAKE_CXX_COMPILER=clang++ .`
+2. 通过导出环境变量：`env CXX=clang++ cmake ..`
+
+Note:CMake了解运行环境，可以通过CLI的-D开关或环境变量设置选项;前一种机制覆盖后一种机制
+建议使用-D显示设置选项
+
+### 更多信息
+* `CMAKE_<LANG>_COMPILER_LOADED`：如果为项目启用了语言<LANG>，则将设置为TRUE
+* `CMAKE_<LANG>_COMPILER_ID`：编译器标识字符串，编译器供应商所特有
+* `CMAKE_COMPILER_IS_GNU<LANG>`：如果语言<LANG>是GNU编译器集合的一部分，则将此逻辑变量设置为TRUE
+* `CMAKE_<LANG>_COMPILER_VERSION`：此变量包含一个字符串，该字符串给定语言的编译器版本
+
+
+
+
+
